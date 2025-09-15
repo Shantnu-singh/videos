@@ -116,9 +116,10 @@ def download_captions(counter, item, stats):
     
     try:
         srt = YouTubeTranscriptApi().fetch(videoId, languages=['en', 'en-US'])
+        
+        # To Solve: Object of type FetchedTranscript is not JSON serializable
         captions_list = []
         for snippet in srt:
-            # snippet seems to have these attributes; verify with your version
             captions_list.append({
                 "text": snippet.text,
                 "start": snippet.start,
